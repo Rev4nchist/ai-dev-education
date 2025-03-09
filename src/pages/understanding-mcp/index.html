@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding MCP | AI-Dev Education</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <style>
+        .content-section {
+            padding: 2rem 0;
+        }
+        .mcp-diagram {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .mcp-diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        .mcp-diagram-text {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary-blue);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .comparison-table th {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-blue);
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .quote-block {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(114, 9, 183, 0.1));
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .quote-block::before {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            color: rgba(114, 9, 183, 0.2);
+        }
+        .quote-content {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .quote-author {
+            font-weight: 600;
+            text-align: right;
+        }
+        .use-case {
+            background-color: rgba(255, 125, 0, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-orange);
+        }
+        .use-case h4 {
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+        }
+        .architecture-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .architecture-box {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+        .arch-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .arch-item {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+        .arch-item.server {
+            background-color: var(--primary-purple);
+        }
+        .arch-item.data {
+            background-color: var(--primary-orange);
+        }
+        .arch-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../../index.html">AI-Dev Education</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../introduction/index.html">Introduction</a></li>
+                    <li><a href="index.html" class="active">Understanding MCP</a></li>
+                    <li><a href="../integrating-mcp/index.html">Integration</a></li>
+                    <li><a href="../building-mcp-servers/index.html">Building Servers</a></li>
+                    <li><a href="../best-practices/index.html">Best Practices</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Understanding MCP</h1>
+            <p>Explore the Model Context Protocol, the open standard powering AI tool integration</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2>What is the Model Context Protocol (MCP)?</h2>
+                <p>The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to Large Language Models (LLMs). It creates a secure, standardized way for AI models to interact with various data sources and tools, enabling more powerful and flexible AI applications.</p>
+                
+                <div class="quote-block">
+                    <p class="quote-content">Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools.</p>
+                    <p class="quote-author">— Model Context Protocol Documentation</p>
+                </div>
+
+                <p>MCP was developed to solve a critical challenge in AI-assisted development: how to securely and efficiently connect AI models with the data and tools they need to be truly useful. Before MCP, each AI tool had to create its own custom integrations with data sources, leading to fragmentation, security concerns, and limited interoperability.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>How MCP Works</h2>
+                <p>At its core, MCP follows a client-server architecture that enables AI models to interact with external tools and resources in a structured way:</p>
+
+                <div class="architecture-diagram">
+                    <div class="architecture-box">
+                        <div class="arch-row">
+                            <div class="arch-item">
+                                <h4>MCP Hosts</h4>
+                                <p>Claude, IDEs, AI Tools</p>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="arch-row">
+                            <div class="arch-item">
+                                <h4>MCP Clients</h4>
+                                <p>Protocol clients with 1:1 server connections</p>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="arch-row">
+                            <div class="arch-item server">
+                                <h4>MCP Server 1</h4>
+                                <p>e.g., Database Access</p>
+                            </div>
+                            <div class="arch-item server">
+                                <h4>MCP Server 2</h4>
+                                <p>e.g., Web Search</p>
+                            </div>
+                            <div class="arch-item server">
+                                <h4>MCP Server 3</h4>
+                                <p>e.g., File System</p>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="arch-row">
+                            <div class="arch-item data">
+                                <h4>Local Data Sources</h4>
+                                <p>Files, Databases, Services</p>
+                            </div>
+                            <div class="arch-item data">
+                                <h4>Remote Services</h4>
+                                <p>APIs, Cloud Services</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mcp-diagram-text">
+                        <p><strong>MCP Hosts</strong>: Programs like Claude Desktop, IDEs (such as Cursor or Windsurf), or other AI tools that want to access data through MCP.</p>
+                        <p><strong>MCP Clients</strong>: Protocol clients that maintain one-to-one connections with servers, handling the communication between hosts and servers.</p>
+                        <p><strong>MCP Servers</strong>: Lightweight programs that each expose specific capabilities through the standardized Model Context Protocol.</p>
+                        <p><strong>Data Sources</strong>: Your computer's files, databases, services, or external systems that MCP servers can securely access.</p>
+                    </div>
+                </div>
+
+                <p>When an AI model needs to access external data or functionality, it makes a request through the MCP client, which routes the request to the appropriate MCP server. The server then interacts with the data source or service and returns the results back through the client to the AI model.</p>
+
+                <p>This architecture provides several key benefits:</p>
+                <ul>
+                    <li>It keeps sensitive data within your infrastructure, as the AI model only receives the specific information it needs.</li>
+                    <li>It allows for a modular approach, where new data sources can be added by creating new MCP servers.</li>
+                    <li>It standardizes the communication protocol, making it easier to switch between different AI models or tools.</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Key Components of MCP</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools</h3>
+                        <p>Functions that MCP servers expose to clients, allowing AI models to perform specific actions like searching a database, accessing files, or calling an API.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Prompts</h3>
+                        <p>Pre-defined text that can be injected into the AI model's context to guide its behavior or provide specific information.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Resources</h3>
+                        <p>Static or dynamic data that can be provided to the AI model, such as documentation, code snippets, or other reference materials.</p>
+                    </div>
+                </div>
+
+                <p>MCP servers can implement one or more of these components, depending on their purpose. For example, a database MCP server might primarily expose tools for querying data, while a documentation server might focus on providing resources.</p>
+
+                <h3>MCP Transports</h3>
+                <p>MCP supports different transport mechanisms for communication between clients and servers:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Transport Type</th>
+                            <th>Description</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>stdio</td>
+                            <td>Standard input/output communication</td>
+                            <td>Local MCP servers running on the same machine</td>
+                        </tr>
+                        <tr>
+                            <td>sse</td>
+                            <td>Server-Sent Events over HTTP</td>
+                            <td>Remote MCP servers accessed over a network</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Different AI tools may support different transport types. For example, Cursor's MCP client supports both stdio and sse transports, while Windsurf's Cascade currently only supports the stdio transport.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Why MCP Matters</h2>
+                <p>The Model Context Protocol represents a significant advancement in AI-assisted development for several reasons:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-plug"></i>
+                        <h3>Standardization</h3>
+                        <p>MCP provides a common language for AI tools and data sources to communicate, reducing fragmentation in the ecosystem.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security</h3>
+                        <p>By keeping sensitive data within your infrastructure and only sharing what's necessary, MCP enhances data privacy and security.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Flexibility</h3>
+                        <p>MCP allows you to switch between different AI models or tools without having to rebuild your integrations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <h3>Extensibility</h3>
+                        <p>New capabilities can be added to AI tools by creating new MCP servers, without modifying the core AI model.</p>
+                    </div>
+                </div>
+
+                <h3>Strategic Value for Executives</h3>
+                <p>For CTOs and other executives, MCP offers several strategic advantages:</p>
+                <ul>
+                    <li><strong>Future-Proofing</strong>: As an open standard, MCP helps protect against vendor lock-in and ensures your AI investments remain valuable as the technology evolves.</li>
+                    <li><strong>Security Compliance</strong>: MCP's architecture helps address data privacy concerns by keeping sensitive information within your control.</li>
+                    <li><strong>Scalability</strong>: The modular nature of MCP makes it easier to scale your AI capabilities across different teams and projects.</li>
+                    <li><strong>Cost Efficiency</strong>: By standardizing integrations, MCP reduces the development and maintenance costs associated with custom connectors.</li>
+                </ul>
+
+                <div class="quote-block">
+                    <p class="quote-content">MCP: The backbone of AI that won't break your security.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>MCP in Practice: Real-World Applications</h2>
+                <p>MCP enables a wide range of powerful applications in AI-assisted development:</p>
+
+                <div class="use-case">
+                    <h4>Code Repository Integration</h4>
+                    <p>An MCP server can provide AI tools with access to your codebase, allowing them to understand your project structure, search for specific code patterns, or suggest improvements based on your existing code.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>Database Access</h4>
+                    <p>With a database MCP server, AI tools can query your databases to answer questions about your data, generate reports, or help with database schema design—all without exposing your entire database to the AI model.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>Documentation Generation</h4>
+                    <p>MCP can enable AI tools to access your codebase and automatically generate documentation, keeping it up-to-date as your code evolves.</p>
+                </div>
+
+                <div class="use-case">
+                    <h4>API Integration</h4>
+                    <p>MCP servers can wrap external APIs, allowing AI tools to interact with third-party services while handling authentication and data formatting behind the scenes.</p>
+                </div>
+
+                <p>These applications demonstrate how MCP can transform AI from a general-purpose tool into a specialized assistant that understands your specific development environment and needs.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>MCP Implementation in Popular Tools</h2>
+                <p>Several leading AI development tools have already implemented MCP support:</p>
+
+                <h3>Cursor</h3>
+                <p>Cursor implements an MCP client that supports an arbitrary number of MCP servers. It supports both stdio and sse transports, making it flexible for different deployment scenarios. MCP tools in Cursor are available to the Agent in Composer, allowing it to leverage external data sources and tools.</p>
+
+                <div class="code-block">
+                    <pre>// Example of configuring an MCP server in Cursor
+{
+  "name": "Weather Server",
+  "transport": {
+    "kind": "stdio",
+    "command": "node ~/mcp-quickstart/weather-server-typescript/build/index.js"
+  }
+}</pre>
+                </div>
+
+                <h3>Windsurf (Cascade)</h3>
+                <p>Windsurf's Cascade chatbot natively integrates with MCP, allowing you to bring your own selection of MCP servers for Cascade to use. To set up MCP with Cascade, you navigate to Windsurf Settings > Advanced Settings and configure your MCP servers.</p>
+
+                <div class="code-block">
+                    <pre>// Example of an MCP configuration in Windsurf
+{
+  "servers": [
+    {
+      "name": "Google Maps",
+      "transport": {
+        "kind": "stdio",
+        "command": "node ~/mcp-servers/google-maps/index.js"
+      },
+      "env": {
+        "GOOGLE_MAPS_API_KEY": "your-api-key-here"
+      }
+    }
+  ]
+}</pre>
+                </div>
+
+                <p>Both Cursor and Windsurf allow you to add custom MCP servers, view existing servers, and manage your MCP configuration through their settings interfaces.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Getting Started with MCP</h2>
+                <p>If you're interested in exploring MCP for your development workflow, here are some steps to get started:</p>
+
+                <ol>
+                    <li><strong>Choose an MCP-compatible tool</strong>: Start with an AI development tool that supports MCP, such as Cursor or Windsurf.</li>
+                    <li><strong>Explore available MCP servers</strong>: Many pre-built MCP servers are available for common use cases like database access, web search, or file system integration.</li>
+                    <li><strong>Configure your first MCP server</strong>: Follow the tool-specific instructions to add an MCP server to your environment.</li>
+                    <li><strong>Test with simple tasks</strong>: Start by using MCP for simple tasks, like retrieving information from a database or searching your codebase.</li>
+                    <li><strong>Consider building custom servers</strong>: As you become more familiar with MCP, you might want to build custom MCP servers for your specific needs.</li>
+                </ol>
+
+                <p>In the next section, we'll explore how to integrate MCP with development tools in more detail, including step-by-step guides for Windsurf and Cursor.</p>
+            </div>
+
+            <div class="content-section">
+                <div class="cta-box" style="text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(114, 9, 183, 0.1)); border-radius: 10px;">
+                    <h2>Ready to Integrate MCP?</h2>
+                    <p>Learn how to integrate MCP with your development tools and enhance your AI-assisted workflow.</p>
+                    <a href="../integrating-mcp/index.html" class="btn btn-primary">Explore MCP Integration</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">AI-Dev Education</div>
+                    <p>An educational resource for AI-assisted development and Model Context Protocol (MCP).</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../introduction/index.html">Introduction</a></li>
+                        <li><a href="index.html">Understanding MCP</a></li>
+                        <li><a href="../integrating-mcp/index.html">Integration</a></li>
+                        <li><a href="../building-mcp-servers/index.html">Building Servers</a></li>
+                        <li><a href="../best-practices/index.html">Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://docs.codeium.com/getstarted/overview" target="_blank">Codeium Overview</a></li>
+                        <li><a href="https://docs.codeium.com/windsurf/mcp" target="_blank">Windsurf MCP Integration</a></li>
+                        <li><a href="https://www.aihero.dev/mcp-server-from-a-single-typescript-file" target="_blank">AI Hero MCP Server</a></li>
+                        <li><a href="https://docs.cursor.com/get-started/welcome" target="_blank">Cursor Welcome</a></li>
+                        <li><a href="https://docs.cursor.com/context/model-context-protocol" target="_blank">Cursor MCP</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 AI-Dev Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button">
+            <i class="fas fa-comment"></i>
+        </div>
+    </div>
+
+    <script src="../../utils/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrating MCP with Development Tools | AI-Dev Education</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <style>
+        .content-section {
+            padding: 2rem 0;
+        }
+        .integration-tabs {
+            display: flex;
+            margin: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .step-container {
+            margin-bottom: 3rem;
+        }
+        .step {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 5px solid var(--primary-blue);
+        }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-purple));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .step h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .step p {
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .note-box {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .warning-box {
+            background-color: rgba(255, 125, 0, 0.1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-orange);
+        }
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+        }
+        .tool-list {
+            margin: 2rem 0;
+        }
+        .tool-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-purple);
+        }
+        .tool-item h4 {
+            margin-top: 0;
+            color: var(--primary-purple);
+        }
+        .tool-item p {
+            margin-bottom: 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .comparison-table th {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-blue);
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../../index.html">AI-Dev Education</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../introduction/index.html">Introduction</a></li>
+                    <li><a href="../understanding-mcp/index.html">Understanding MCP</a></li>
+                    <li><a href="index.html" class="active">Integration</a></li>
+                    <li><a href="../building-mcp-servers/index.html">Building Servers</a></li>
+                    <li><a href="../best-practices/index.html">Best Practices</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Integrating MCP with Development Tools</h1>
+            <p>Step-by-step guides for integrating Model Context Protocol with Windsurf and Cursor</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2>Getting Started with MCP Integration</h2>
+                <p>The Model Context Protocol (MCP) can be integrated with various development tools to enhance your AI-assisted workflow. In this guide, we'll focus on integrating MCP with two popular tools: Windsurf's Cascade chatbot and Cursor IDE.</p>
+                
+                <p>Both tools offer powerful MCP integration capabilities, but they have slightly different approaches and configurations. We'll walk through the step-by-step process for each tool, allowing you to choose the one that best fits your development workflow.</p>
+
+                <div class="integration-tabs">
+                    <div class="tab active" onclick="openTab(event, 'windsurf')">Windsurf (Cascade)</div>
+                    <div class="tab" onclick="openTab(event, 'cursor')">Cursor</div>
+                    <div class="tab" onclick="openTab(event, 'comparison')">Comparison</div>
+                </div>
+
+                <!-- Windsurf Integration Tab -->
+                <div id="windsurf" class="tab-content active">
+                    <h2>Integrating MCP with Windsurf's Cascade</h2>
+                    <p>Windsurf is Codeium's next-generation AI IDE, featuring Cascade, an agentic chatbot that supports Model Context Protocol (MCP) for interfacing with external tools. This guide will walk you through the process of setting up and using MCP with Windsurf's Cascade.</p>
+
+                    <div class="step-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>Prerequisites</h3>
+                            <p>Before you begin, ensure you have the following:</p>
+                            <ul>
+                                <li><strong>Codeium Windsurf Editor:</strong> Download and install Windsurf from <a href="https://codeium.com/windsurf" target="_blank">codeium.com/windsurf</a>.</li>
+                                <li><strong>Node.js (>= v18) and npm:</strong> Ensure Node.js (version 18 or later) and npm are installed. Download them from <a href="https://nodejs.org" target="_blank">nodejs.org</a>.</li>
+                                <li><strong>API Keys:</strong> Depending on the MCP servers you plan to use, you may need specific API keys (e.g., Neon API key for database access).</li>
+                            </ul>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>Accessing MCP Configuration in Windsurf</h3>
+                            <p>To configure MCP Servers in Windsurf, you need to access the MCP configuration file:</p>
+                            <ol>
+                                <li>Open Windsurf.</li>
+                                <li>Open Cascade by using <code>⌘L</code> (Mac) or <code>Ctrl+L</code> (Windows/Linux).</li>
+                                <li>Find the toolbar above the Cascade input and click the hammer icon (🔨).</li>
+                                <li>Click the <strong>"Configure"</strong> button to open the <code>~/.codeium/windsurf/mcp_config.json</code> file in the IDE.</li>
+                            </ol>
+                            <div class="note-box">
+                                <p><strong>Note:</strong> The MCP configuration file is located at <code>~/.codeium/windsurf/mcp_config.json</code>. This file contains the list of MCP servers that Cascade can connect to.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>Configuring an MCP Server</h3>
+                            <p>In the <code>mcp_config.json</code> file, you need to specify a list of MCP servers. Here's a basic template for the configuration:</p>
+                            <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "server-name": {
+      "command": "command-to-run",
+      "args": ["arg1", "arg2", "..."]
+    }
+  }
+}</pre>
+                            </div>
+                            <p>Let's look at a specific example using the Neon MCP Server for database access:</p>
+                            <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "neon": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon", "start", "YOUR_NEON_API_KEY"]
+    }
+  }
+}</pre>
+                            </div>
+                            <p>Components of this configuration:</p>
+                            <ul>
+                                <li><strong>"neon"</strong>: This is a name you choose for your MCP server connection.</li>
+                                <li><strong>"command"</strong>: This is the command Windsurf will execute to start the MCP server.</li>
+                                <li><strong>"args"</strong>: These are the arguments passed to the command.</li>
+                            </ul>
+                            <div class="warning-box">
+                                <p><strong>Security Warning:</strong> Be careful with API keys in your configuration file. Never share your configuration file publicly or commit it to a public repository.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3>Activating the MCP Server</h3>
+                            <p>After configuring your MCP server:</p>
+                            <ol>
+                                <li>Save the <code>mcp_config.json</code> file.</li>
+                                <li>Click <strong>"Refresh"</strong> (🔄) in the MCP toolbar in Windsurf Cascade.</li>
+                                <li>If the integration is successful, the toolbar should indicate that you have MCP servers available, and you should see "1 available MCP server" (or more if you configured additional servers).</li>
+                            </ol>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h3>Using MCP with Cascade</h3>
+                            <p>Once your MCP server is configured and active, you can use it with Cascade:</p>
+                            <ol>
+                                <li>Open Cascade using <code>⌘L</code> (Mac) or <code>Ctrl+L</code> (Windows/Linux).</li>
+                                <li>Ask Cascade to perform tasks that require the MCP server. For example, if you've configured the Neon MCP server, you might ask: "List all tables in my Neon database."</li>
+                                <li>Cascade will automatically use the appropriate MCP server to fulfill your request.</li>
+                            </ol>
+                            <div class="warning-box">
+                                <p><strong>Note:</strong> Be aware that Cascade currently executes commands directly from your prompts without confirmation, unlike some other IDE's and apps. Review your requests thoroughly to avoid unintended or unwanted actions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Example MCP Servers for Windsurf</h3>
+                    <p>Here are some popular MCP servers you can integrate with Windsurf:</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <h4>Neon Database MCP Server</h4>
+                            <p>Allows you to interact with Neon Postgres databases using natural language commands.</p>
+                            <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "neon": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon", "start", "YOUR_NEON_API_KEY"]
+    }
+  }
+}</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-item">
+                            <h4>Web Search MCP Server</h4>
+                            <p>Enables Cascade to search the web for information.</p>
+                            <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "web-search": {
+      "command": "npx",
+      "args": ["-y", "mcp-web-search", "start", "YOUR_SEARCH_API_KEY"]
+    }
+  }
+}</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-item">
+                            <h4>GitHub MCP Server</h4>
+                            <p>Allows Cascade to interact with GitHub repositories.</p>
+                            <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "mcp-github", "start", "YOUR_GITHUB_TOKEN"]
+    }
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cursor Integration Tab -->
+                <div id="cursor" class="tab-content">
+                    <h2>Integrating MCP with Cursor</h2>
+                    <p>Cursor is an intelligent IDE that implements an MCP client supporting an arbitrary number of MCP servers. This guide will walk you through the process of setting up and using MCP with Cursor.</p>
+
+                    <div class="step-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>Prerequisites</h3>
+                            <p>Before you begin, ensure you have the following:</p>
+                            <ul>
+                                <li><strong>Cursor IDE:</strong> Download and install Cursor from <a href="https://cursor.com" target="_blank">cursor.com</a>.</li>
+                                <li><strong>Node.js and npm:</strong> Ensure Node.js and npm are installed for running MCP servers.</li>
+                                <li><strong>API Keys:</strong> Depending on the MCP servers you plan to use, you may need specific API keys.</li>
+                            </ul>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>Accessing MCP Settings in Cursor</h3>
+                            <p>To configure MCP Servers in Cursor:</p>
+                            <ol>
+                                <li>Open Cursor.</li>
+                                <li>Go to <strong>Cursor Settings</strong> > <strong>Features</strong> > <strong>MCP</strong>.</li>
+                                <li>Click on the <strong>"+ Add New MCP Server"</strong> button.</li>
+                            </ol>
+                            <div class="note-box">
+                                <p><strong>Note:</strong> Cursor supports both <code>stdio</code> and <code>sse</code> transports for MCP servers, giving you flexibility in how you connect to your servers.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>Configuring an MCP Server</h3>
+                            <p>When adding a new MCP server, you'll need to fill out a form with the following information:</p>
+                            <ol>
+                                <li>Select the transport type under <strong>Type</strong> (stdio or sse).</li>
+                                <li>Fill out a nickname for the server (<strong>Name</strong>).</li>
+                                <li>Provide either the command to run or the URL of the server, depending on the transport type.</li>
+                            </ol>
+                            <p>For example, to configure a weather server using stdio transport:</p>
+                            <ul>
+                                <li><strong>Type:</strong> stdio</li>
+                                <li><strong>Name:</strong> Weather Server</li>
+                                <li><strong>Command:</strong> node ~/mcp-quickstart/weather-server-typescript/build/index.js</li>
+                            </ul>
+                            <p>Or to configure a server using sse transport:</p>
+                            <ul>
+                                <li><strong>Type:</strong> sse</li>
+                                <li><strong>Name:</strong> Sample Tool</li>
+                                <li><strong>URL:</strong> http://localhost:8765</li>
+                            </ul>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3>Project-specific MCP Configuration</h3>
+                            <p>You can also configure project-specific MCP servers using <code>.cursor/mcp.json</code>. The file follows this format:</p>
+                            <div class="code-block">
+<pre>// For stdio transport
+{
+  "servers": [
+    {
+      "name": "My Server",
+      "transport": {
+        "kind": "stdio",
+        "command": "node /path/to/server.js"
+      }
+    }
+  ]
+}
+
+// For sse transport
+{
+  "servers": [
+    {
+      "name": "My Server",
+      "transport": {
+        "kind": "sse",
+        "url": "http://localhost:8765"
+      }
+    }
+  ]
+}</pre>
+                            </div>
+                            <div class="note-box">
+                                <p><strong>Tip:</strong> Project-specific configurations are useful when different projects require different MCP servers or configurations.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h3>Using MCP Tools in Cursor</h3>
+                            <p>Once your MCP server is configured:</p>
+                            <ol>
+                                <li>The Composer Agent will automatically use any MCP tools that are listed under <strong>Available Tools</strong> on the MCP settings page if it determines them to be relevant.</li>
+                                <li>To prompt tool usage intentionally, simply tell the agent to use the tool, referring to it either by name or by description.</li>
+                            </ol>
+                            <div class="note-box">
+                                <p><strong>Tool Approval:</strong> By default, when Agent wants to use an MCP tool, it will display a message asking for your approval. You can expand the message to see the tool call arguments.</p>
+                            </div>
+                            <div class="warning-box">
+                                <p><strong>Yolo Mode:</strong> You can enable Yolo mode to allow Agent to automatically run MCP tools without requiring approval, similar to how terminal commands are executed. This can be enabled in Cursor settings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Building a Custom MCP Server for Cursor</h3>
+                    <p>You can also build your own custom MCP server for Cursor. Here's a basic example of creating a simple Jira integration:</p>
+
+                    <div class="step-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>Project Setup</h3>
+                            <div class="code-block">
+<pre>mkdir cursor-jira-tool  
+cd cursor-jira-tool  
+npm init -y  
+npm install @modelcontextprotocol/sdk jira-client typescript  
+npm install --save-dev @types/node</pre>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>Configure TypeScript</h3>
+                            <div class="code-block">
+<pre>// tsconfig.json
+{  
+  "compilerOptions": {  
+    "target": "ES2020",  
+    "module": "ES2020",  
+    "moduleResolution": "node",  
+    "outDir": "./dist",  
+    "strict": true  
+  }  
+}</pre>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>Implement MCP Server</h3>
+                            <div class="code-block">
+<pre>// src/index.ts
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp';  
+import { z } from 'zod';  
+  
+const server = new McpServer({  
+  name: "jira-tools",  
+  version: "1.0.0"  
+});  
+
+// Define commands  
+server.tool("add-comment", "Add a comment to a Jira ticket", {  
+  ticket: z.string(),  
+  comment: z.string()  
+}, async ({ ticket, comment }) => {  
+  // Implementation logic here
+  return { success: true, message: `Added comment to ${ticket}` };  
+});  
+
+server.tool("update-ticket", "Update ticket status", {  
+  ticket: z.string(),  
+  status: z.string()  
+}, async ({ ticket, status }) => {  
+  // Implementation logic here
+  return { success: true, message: `Updated ${ticket} status to ${status}` };  
+});
+
+// Start the server
+server.start();</pre>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3>Build and Configure</h3>
+                            <ol>
+                                <li>Build your project: <code>npm run build</code></li>
+                                <li>In Cursor, go to <strong>Features</strong> > <strong>MCP</strong></li>
+                                <li>Add a new MCP server pointing to your built <code>dist/index.js</code> file</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Tab -->
+                <div id="comparison" class="tab-content">
+                    <h2>Comparing MCP Integration: Windsurf vs. Cursor</h2>
+                    <p>Both Windsurf and Cursor offer powerful MCP integration capabilities, but they have different approaches and features. Here's a comparison to help you choose the right tool for your needs:</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Windsurf (Cascade)</th>
+                                <th>Cursor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MCP Transport Support</td>
+                                <td>stdio only</td>
+                                <td>stdio and sse</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration Location</td>
+                                <td>~/.codeium/windsurf/mcp_config.json</td>
+                                <td>Cursor Settings UI or .cursor/mcp.json</td>
+                            </tr>
+                            <tr>
+                                <td>Tool Approval</td>
+                                <td>No approval required (executes directly)</td>
+                                <td>Requires approval by default (Yolo mode optional)</td>
+                            </tr>
+                            <tr>
+                                <td>Project-Specific Config</td>
+                                <td>Limited support</td>
+                                <td>Full support via .cursor/mcp.json</td>
+                            </tr>
+                            <tr>
+                                <td>UI for Configuration</td>
+                                <td>Basic (requires editing JSON)</td>
+                                <td>More comprehensive UI</td>
+                            </tr>
+                            <tr>
+                                <td>Integration Style</td>
+                                <td>Chatbot-focused (Cascade)</td>
+                                <td>Agent and Composer integration</td>
+                            </tr>
+                            <tr>
+                                <td>Base Editor</td>
+                                <td>Codeium's custom editor</td>
+                                <td>Built on VS Code</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>When to Choose Windsurf</h3>
+                    <ul>
+                        <li>If you prefer a more conversational, chatbot-driven approach to AI assistance</li>
+                        <li>If you're already using other Codeium tools and want tight integration</li>
+                        <li>If you want direct execution of MCP commands without approval steps</li>
+                    </ul>
+
+                    <h3>When to Choose Cursor</h3>
+                    <ul>
+                        <li>If you need support for both stdio and sse transports</li>
+                        <li>If you prefer a VS Code-like environment</li>
+                        <li>If you want more control over tool approval and execution</li>
+                        <li>If you need project-specific MCP configurations</li>
+                    </ul>
+
+                    <div class="note-box">
+                        <p><strong>Tip:</strong> Both tools are actively developing their MCP integration capabilities, so it's worth checking their latest documentation for updates and new features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Common MCP Integration Challenges</h2>
+                <p>When integrating MCP with development tools, you might encounter some common challenges:</p>
+
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <h4>API Key Management</h4>
+                        <p>Challenge: Securely storing and managing API keys for various MCP servers.</p>
+                        <p>Solution: Use environment variables or secure credential storage solutions rather than hardcoding keys in configuration files.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <h4>Server Compatibility</h4>
+                        <p>Challenge: Ensuring MCP servers are compatible with your chosen development tool.</p>
+                        <p>Solution: Check the documentation for both the MCP server and the development tool to confirm compatibility, particularly regarding transport types.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <h4>Debugging MCP Issues</h4>
+                        <p>Challenge: Identifying and resolving issues with MCP server connections.</p>
+                        <p>Solution: Check server logs, verify network connectivity, and ensure the server is running correctly. Both Windsurf and Cursor provide ways to view MCP server status.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="cta-box" style="text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(255, 125, 0, 0.1), rgba(114, 9, 183, 0.1)); border-radius: 10px;">
+                    <h2>Ready to Build Your Own MCP Server?</h2>
+                    <p>Now that you know how to integrate MCP with development tools, learn how to build your own custom MCP servers.</p>
+                    <a href="../building-mcp-servers/index.html" class="btn btn-primary">Learn to Build MCP Servers</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">AI-Dev Education</div>
+                    <p>An educational resource for AI-assisted development and Model Context Protocol (MCP).</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../introduction/index.html">Introduction</a></li>
+                        <li><a href="../understanding-mcp/index.html">Understanding MCP</a></li>
+                        <li><a href="index.html">Integration</a></li>
+                        <li><a href="../building-mcp-servers/index.html">Building Servers</a></li>
+                        <li><a href="../best-practices/index.html">Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://docs.codeium.com/getstarted/overview" target="_blank">Codeium Overview</a></li>
+                        <li><a href="https://docs.codeium.com/windsurf/mcp" target="_blank">Windsurf MCP Integration</a></li>
+                        <li><a href="https://www.aihero.dev/mcp-server-from-a-single-typescript-file" target="_blank">AI Hero MCP Server</a></li>
+                        <li><a href="https://docs.cursor.com/get-started/welcome" target="_blank">Cursor Welcome</a></li>
+                        <li><a href="https://docs.cursor.com/context/model-context-protocol" target="_blank">Cursor MCP</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 AI-Dev Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button">
+            <i class="fas fa-comment"></i>
+        </div>
+    </div>
+
+    <script src="../../utils/main.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and add active class to the button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

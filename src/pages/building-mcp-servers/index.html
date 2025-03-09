@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building MCP Servers | AI-Dev Education</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <style>
+        .content-section {
+            padding: 2rem 0;
+        }
+        .tutorial-container {
+            margin-bottom: 3rem;
+        }
+        .step {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 5px solid var(--primary-purple);
+        }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-purple));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .step h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .step p {
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .note-box {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .warning-box {
+            background-color: rgba(255, 125, 0, 0.1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-orange);
+        }
+        .tip-box {
+            background-color: rgba(114, 9, 183, 0.1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .file-structure {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .file-structure pre {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .tool-example {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-orange);
+        }
+        .tool-example h4 {
+            color: var(--primary-orange);
+            margin-top: 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .benefit-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+        .benefit-card h3 {
+            margin-bottom: 1rem;
+        }
+        .benefit-card p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../../index.html">AI-Dev Education</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../introduction/index.html">Introduction</a></li>
+                    <li><a href="../understanding-mcp/index.html">Understanding MCP</a></li>
+                    <li><a href="../integrating-mcp/index.html">Integration</a></li>
+                    <li><a href="index.html" class="active">Building Servers</a></li>
+                    <li><a href="../best-practices/index.html">Best Practices</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Building MCP Servers</h1>
+            <p>Learn how to create your own Model Context Protocol server using TypeScript</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <h2>Introduction to Building MCP Servers</h2>
+                <p>The Model Context Protocol (MCP) allows AI models to interact with external tools and data sources. While there are many pre-built MCP servers available, creating your own custom server gives you the flexibility to integrate specific tools and services that your AI applications need.</p>
+                
+                <p>In this tutorial, we'll walk through the process of building a simple MCP server using TypeScript. By the end, you'll have a functional MCP server that can be connected to any MCP host like Claude Desktop, Cursor, or Windsurf.</p>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <h3>Customization</h3>
+                        <p>Build tools tailored to your specific needs and workflows</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Security</h3>
+                        <p>Maintain control over your data and how it's accessed</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-plug"></i>
+                        <h3>Integration</h3>
+                        <p>Connect AI models to your existing systems and services</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prerequisites</h2>
+                <p>Before we begin, make sure you have the following installed:</p>
+                <ul>
+                    <li><strong>Node.js</strong> (version 18 or later)</li>
+                    <li><strong>npm</strong> or <strong>yarn</strong> package manager</li>
+                    <li>Basic knowledge of <strong>TypeScript</strong> and JavaScript</li>
+                    <li>A text editor or IDE (like VS Code)</li>
+                    <li>An MCP host for testing (like Claude Desktop, Cursor, or Windsurf)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Building a Simple MCP Server with TypeScript</h2>
+                <p>Let's create a simple MCP server that provides tools for working with weather data and unit conversions. We'll build this step by step, starting with project setup and ending with a fully functional MCP server.</p>
+
+                <div class="tutorial-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Project Setup</h3>
+                        <p>First, let's create a new directory for our project and initialize it:</p>
+                        <div class="code-block">
+<pre>mkdir mcp-weather-server
+cd mcp-weather-server
+npm init -y</pre>
+                        </div>
+                        <p>Next, install the required dependencies:</p>
+                        <div class="code-block">
+<pre>npm install @modelcontextprotocol/sdk
+npm install --save-dev typescript @types/node</pre>
+                        </div>
+                        <p>Create a TypeScript configuration file (<code>tsconfig.json</code>) in the root directory:</p>
+                        <div class="code-block">
+<pre>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "./build",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}</pre>
+                        </div>
+                        <p>Update the <code>package.json</code> file to include build scripts:</p>
+                        <div class="code-block">
+<pre>{
+  "name": "mcp-weather-server",
+  "version": "1.0.0",
+  "description": "A simple MCP server for weather data and unit conversions",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["mcp", "weather", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}</pre>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Creating the Basic Server Structure</h3>
+                        <p>Create a <code>src</code> directory and add an <code>index.ts</code> file with the basic MCP server setup:</p>
+                        <div class="code-block">
+<pre>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "@modelcontextprotocol/sdk/zod.js";
+
+// Create a new MCP server
+const server = new Server(
+  {
+    name: "weather-tools",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+    },
+  }
+);
+
+// Start the server with stdio transport
+const transport = new StdioServerTransport();
+server.listen(transport);</pre>
+                        </div>
+                        <p>This code creates a basic MCP server named "weather-tools" with stdio transport, which is compatible with most MCP hosts.</p>
+                        <div class="note-box">
+                            <p><strong>Note:</strong> The stdio transport is used for local MCP servers running on the same machine as the host. For remote servers, you would use a different transport like HTTP/SSE.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Defining Tool Schemas</h3>
+                        <p>Let's define schemas for our tools using Zod, which is included in the MCP SDK. Add the following code before the server initialization:</p>
+                        <div class="code-block">
+<pre>// Schema for the get_weather tool
+const getWeatherSchema = z.object({
+  location: z.string().describe("The city or location to get weather for"),
+  units: z.enum(["metric", "imperial"]).default("metric").describe("Temperature units (metric or imperial)"),
+});
+
+// Schema for the convert_temperature tool
+const convertTemperatureSchema = z.object({
+  temperature: z.number().describe("The temperature value to convert"),
+  from: z.enum(["celsius", "fahrenheit", "kelvin"]).describe("The source temperature unit"),
+  to: z.enum(["celsius", "fahrenheit", "kelvin"]).describe("The target temperature unit"),
+});</pre>
+                        </div>
+                        <p>These schemas define the parameters that each tool will accept, along with descriptions that will be shown to users in the MCP host.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Implementing Tool Functions</h3>
+                        <p>Now, let's implement the actual functionality for our tools. Add these functions after the schemas:</p>
+                        <div class="code-block">
+<pre>// Mock weather data function (in a real app, this would call a weather API)
+function getWeatherData(location: string, units: "metric" | "imperial") {
+  // This is a mock implementation - in a real app, you would call a weather API
+  const mockWeatherData = {
+    location,
+    temperature: units === "metric" ? 22 : 72,
+    units: units === "metric" ? "°C" : "°F",
+    conditions: "Partly Cloudy",
+    humidity: 65,
+    windSpeed: units === "metric" ? 15 : 9.3,
+    windUnits: units === "metric" ? "km/h" : "mph",
+    timestamp: new Date().toISOString(),
+  };
+  
+  return mockWeatherData;
+}
+
+// Temperature conversion function
+function convertTemperature(value: number, from: string, to: string) {
+  // Convert to Kelvin first (as an intermediate step)
+  let kelvin: number;
+  
+  switch (from) {
+    case "celsius":
+      kelvin = value + 273.15;
+      break;
+    case "fahrenheit":
+      kelvin = (value - 32) * (5/9) + 273.15;
+      break;
+    case "kelvin":
+      kelvin = value;
+      break;
+    default:
+      throw new Error(`Unsupported source unit: ${from}`);
+  }
+  
+  // Convert from Kelvin to target unit
+  let result: number;
+  
+  switch (to) {
+    case "celsius":
+      result = kelvin - 273.15;
+      break;
+    case "fahrenheit":
+      result = (kelvin - 273.15) * (9/5) + 32;
+      break;
+    case "kelvin":
+      result = kelvin;
+      break;
+    default:
+      throw new Error(`Unsupported target unit: ${to}`);
+  }
+  
+  return {
+    originalValue: value,
+    originalUnit: from,
+    convertedValue: Math.round(result * 100) / 100, // Round to 2 decimal places
+    convertedUnit: to,
+  };
+}</pre>
+                        </div>
+                        <div class="tip-box">
+                            <p><strong>Tip:</strong> In a production MCP server, you would typically connect to real APIs or services. For this tutorial, we're using mock data for simplicity.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h3>Registering Tools with the Server</h3>
+                        <p>Now, let's register our tools with the MCP server. Add this code before starting the server:</p>
+                        <div class="code-block">
+<pre>// Register the get_weather tool
+server.tool({
+  name: "get_weather",
+  description: "Get current weather information for a location",
+  parameters: getWeatherSchema,
+  handler: async ({ location, units }) => {
+    return getWeatherData(location, units);
+  },
+});
+
+// Register the convert_temperature tool
+server.tool({
+  name: "convert_temperature",
+  description: "Convert temperature between different units (Celsius, Fahrenheit, Kelvin)",
+  parameters: convertTemperatureSchema,
+  handler: async ({ temperature, from, to }) => {
+    return convertTemperature(temperature, from, to);
+  },
+});</pre>
+                        </div>
+                        <p>This code registers our tools with the MCP server, making them available to any MCP host that connects to our server.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <h3>Building and Running the Server</h3>
+                        <p>Now that we have our complete MCP server code, let's build and run it:</p>
+                        <div class="code-block">
+<pre>npm run build
+npm start</pre>
+                        </div>
+                        <p>Your MCP server should now be running and ready to accept connections from MCP hosts.</p>
+                        <div class="note-box">
+                            <p><strong>Note:</strong> The server will continue running until you stop it (e.g., by pressing Ctrl+C). In a production environment, you might want to run it as a service or in a container.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <h3>Connecting to an MCP Host</h3>
+                        <p>To use your MCP server with an MCP host like Claude Desktop, Cursor, or Windsurf, you'll need to configure the host to connect to your server. The exact steps depend on the host you're using:</p>
+                        
+                        <h4>For Claude Desktop:</h4>
+                        <ol>
+                            <li>Open Claude Desktop</li>
+                            <li>Go to Settings > MCP</li>
+                            <li>Click "Add Server"</li>
+                            <li>Select "stdio" as the transport type</li>
+                            <li>Enter a name for your server (e.g., "Weather Tools")</li>
+                            <li>For the command, enter the path to your Node.js executable followed by the path to your built server, e.g., <code>node /path/to/mcp-weather-server/build/index.js</code></li>
+                            <li>Click "Add"</li>
+                        </ol>
+                        
+                        <h4>For Cursor:</h4>
+                        <ol>
+                            <li>Open Cursor</li>
+                            <li>Go to Cursor Settings > Features > MCP</li>
+                            <li>Click "+ Add New MCP Server"</li>
+                            <li>Select "stdio" as the Type</li>
+                            <li>Enter a name for your server (e.g., "Weather Tools")</li>
+                            <li>For the Command, enter <code>node /path/to/mcp-weather-server/build/index.js</code></li>
+                            <li>Click "Add"</li>
+                        </ol>
+                        
+                        <h4>For Windsurf:</h4>
+                        <ol>
+                            <li>Open Windsurf</li>
+                            <li>Open Cascade using ⌘L (Mac) or Ctrl+L (Windows/Linux)</li>
+                            <li>Click the hammer icon (🔨) in the toolbar</li>
+                            <li>Click "Configure" to open the MCP configuration file</li>
+                            <li>Add your server to the configuration:</li>
+                        </ol>
+                        <div class="code-block">
+<pre>{
+  "mcpServers": {
+    "weather-tools": {
+      "command": "node",
+      "args": ["/path/to/mcp-weather-server/build/index.js"]
+    }
+  }
+}</pre>
+                        </div>
+                        <li>Save the file and click "Refresh" (🔄) in the MCP toolbar</li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Complete MCP Server Code</h2>
+                <p>Here's the complete code for our MCP server in a single TypeScript file:</p>
+                <div class="code-block">
+<pre>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "@modelcontextprotocol/sdk/zod.js";
+
+// Schema for the get_weather tool
+const getWeatherSchema = z.object({
+  location: z.string().describe("The city or location to get weather for"),
+  units: z.enum(["metric", "imperial"]).default("metric").describe("Temperature units (metric or imperial)"),
+});
+
+// Schema for the convert_temperature tool
+const convertTemperatureSchema = z.object({
+  temperature: z.number().describe("The temperature value to convert"),
+  from: z.enum(["celsius", "fahrenheit", "kelvin"]).describe("The source temperature unit"),
+  to: z.enum(["celsius", "fahrenheit", "kelvin"]).describe("The target temperature unit"),
+});
+
+// Mock weather data function (in a real app, this would call a weather API)
+function getWeatherData(location: string, units: "metric" | "imperial") {
+  // This is a mock implementation - in a real app, you would call a weather API
+  const mockWeatherData = {
+    location,
+    temperature: units === "metric" ? 22 : 72,
+    units: units === "metric" ? "°C" : "°F",
+    conditions: "Partly Cloudy",
+    humidity: 65,
+    windSpeed: units === "metric" ? 15 : 9.3,
+    windUnits: units === "metric" ? "km/h" : "mph",
+    timestamp: new Date().toISOString(),
+  };
+  
+  return mockWeatherData;
+}
+
+// Temperature conversion function
+function convertTemperature(value: number, from: string, to: string) {
+  // Convert to Kelvin first (as an intermediate step)
+  let kelvin: number;
+  
+  switch (from) {
+    case "celsius":
+      kelvin = value + 273.15;
+      break;
+    case "fahrenheit":
+      kelvin = (value - 32) * (5/9) + 273.15;
+      break;
+    case "kelvin":
+      kelvin = value;
+      break;
+    default:
+      throw new Error(`Unsupported source unit: ${from}`);
+  }
+  
+  // Convert from Kelvin to target unit
+  let result: number;
+  
+  switch (to) {
+    case "celsius":
+      result = kelvin - 273.15;
+      break;
+    case "fahrenheit":
+      result = (kelvin - 273.15) * (9/5) + 32;
+      break;
+    case "kelvin":
+      result = kelvin;
+      break;
+    default:
+      throw new Error(`Unsupported target unit: ${to}`);
+  }
+  
+  return {
+    originalValue: value,
+    originalUnit: from,
+    convertedValue: Math.round(result * 100) / 100, // Round to 2 decimal places
+    convertedUnit: to,
+  };
+}
+
+// Create a new MCP server
+const server = new Server(
+  {
+    name: "weather-tools",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+    },
+  }
+);
+
+// Register the get_weather tool
+server.tool({
+  name: "get_weather",
+  description: "Get current weather information for a location",
+  parameters: getWeatherSchema,
+  handler: async ({ location, units }) => {
+    return getWeatherData(location, units);
+  },
+});
+
+// Register the convert_temperature tool
+server.tool({
+  name: "convert_temperature",
+  description: "Convert temperature between different units (Celsius, Fahrenheit, Kelvin)",
+  parameters: convertTemperatureSchema,
+  handler: async ({ temperature, from, to }) => {
+    return convertTemperature(temperature, from, to);
+  },
+});
+
+// Start the server with stdio transport
+const transport = new StdioServerTransport();
+server.listen(transport);</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Advanced MCP Server Features</h2>
+                <p>Once you've mastered the basics of building MCP servers, you can explore more advanced features:</p>
+
+                <div class="tool-example">
+                    <h4>Error Handling</h4>
+                    <p>Implement robust error handling to provide helpful feedback to users:</p>
+                    <div class="code-block">
+<pre>server.tool({
+  name: "example_tool",
+  description: "Example tool with error handling",
+  parameters: z.object({
+    input: z.string(),
+  }),
+  handler: async ({ input }) => {
+    try {
+      // Tool implementation
+      return { result: "Success" };
+    } catch (error) {
+      // Provide a helpful error message
+      throw new Error(`Failed to process input: ${error.message}`);
+    }
+  },
+});</pre>
+                    </div>
+                </div>
+
+                <div class="tool-example">
+                    <h4>Authentication and API Keys</h4>
+                    <p>Securely handle API keys and authentication for external services:</p>
+                    <div class="code-block">
+<pre>// Get API key from environment variable
+const API_KEY = process.env.WEATHER_API_KEY;
+
+// Use the API key in your tool
+server.tool({
+  name: "get_weather_api",
+  description: "Get weather data from a real API",
+  parameters: getWeatherSchema,
+  handler: async ({ location, units }) => {
+    const response = await fetch(
+      `https://api.weatherservice.com/data?location=${encodeURIComponent(location)}&units=${units}&apikey=${API_KEY}`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`Weather API error: ${response.statusText}`);
+    }
+    
+    return await response.json();
+  },
+});</pre>
+                    </div>
+                    <div class="warning-box">
+                        <p><strong>Security Warning:</strong> Never hardcode API keys in your code. Use environment variables or secure credential storage solutions.</p>
+                    </div>
+                </div>
+
+                <div class="tool-example">
+                    <h4>Streaming Responses</h4>
+                    <p>For long-running operations, you can use streaming responses:</p>
+                    <div class="code-block">
+<pre>server.tool({
+  name: "long_running_task",
+  description: "A task that takes time to complete",
+  parameters: z.object({
+    taskId: z.string(),
+  }),
+  handler: async ({ taskId }, { onProgress }) => {
+    // Report progress during execution
+    onProgress({ status: "starting", progress: 0 });
+    
+    // Simulate a long-running task
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    onProgress({ status: "processing", progress: 50 });
+    
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    onProgress({ status: "finalizing", progress: 90 });
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Return final result
+    return { taskId, status: "completed", result: "Task output" };
+  },
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Best Practices for MCP Server Development</h2>
+                <ul>
+                    <li><strong>Clear Documentation:</strong> Provide clear descriptions for your tools and parameters to help users understand how to use them.</li>
+                    <li><strong>Input Validation:</strong> Use Zod schemas to validate input parameters and provide helpful error messages.</li>
+                    <li><strong>Error Handling:</strong> Implement robust error handling to gracefully handle failures and provide useful feedback.</li>
+                    <li><strong>Security:</strong> Protect sensitive information like API keys and credentials. Consider implementing authentication for your MCP server if needed.</li>
+                    <li><strong>Testing:</strong> Test your MCP server thoroughly with different inputs and edge cases.</li>
+                    <li><strong>Monitoring:</strong> In production environments, implement logging and monitoring to track usage and detect issues.</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Project Structure for Larger MCP Servers</h2>
+                <p>For more complex MCP servers, you might want to organize your code into multiple files. Here's a recommended project structure:</p>
+                <div class="file-structure">
+<pre>mcp-server/
+├── src/
+│   ├── index.ts              # Main entry point
+│   ├── server.ts             # Server configuration
+│   ├── tools/                # Tool implementations
+│   │   ├── weather.ts        # Weather-related tools
+│   │   ├── conversion.ts     # Conversion tools
+│   │   └── index.ts          # Tool exports
+│   ├── schemas/              # Zod schemas
+│   │   ├── weather.ts        # Weather schemas
+│   │   ├── conversion.ts     # Conversion schemas
+│   │   └── index.ts          # Schema exports
+│   └── utils/                # Utility functions
+│       ├── api.ts            # API helpers
+│       └── validation.ts     # Validation helpers
+├── tests/                    # Test files
+├── .env                      # Environment variables
+├── .gitignore                # Git ignore file
+├── package.json              # Package configuration
+├── tsconfig.json             # TypeScript configuration
+└── README.md                 # Documentation</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Deploying MCP Servers</h2>
+                <p>Once you've built and tested your MCP server, you might want to deploy it for broader use. Here are some deployment options:</p>
+                
+                <h3>Local Deployment</h3>
+                <p>For personal use or testing, you can run your MCP server locally:</p>
+                <div class="code-block">
+<pre>npm run build
+npm start</pre>
+                </div>
+                
+                <h3>Packaging as an npm Package</h3>
+                <p>To make your MCP server easily installable by others, you can package it as an npm package:</p>
+                <div class="code-block">
+<pre>// Add this to package.json
+{
+  "bin": {
+    "mcp-weather-server": "./build/index.js"
+  }
+}</pre>
+                </div>
+                <p>Then users can install and run it with:</p>
+                <div class="code-block">
+<pre>npm install -g mcp-weather-server
+mcp-weather-server</pre>
+                </div>
+                
+                <h3>Deploying as a Service</h3>
+                <p>For more robust deployment, you can run your MCP server as a service using tools like PM2 or systemd.</p>
+                <div class="code-block">
+<pre># Using PM2
+npm install -g pm2
+pm2 start build/index.js --name mcp-weather-server</pre>
+                </div>
+                
+                <h3>Containerization</h3>
+                <p>For even more portability, you can containerize your MCP server using Docker:</p>
+                <div class="code-block">
+<pre># Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+CMD ["node", "build/index.js"]</pre>
+                </div>
+                <p>Build and run the Docker container:</p>
+                <div class="code-block">
+<pre>docker build -t mcp-weather-server .
+docker run -it mcp-weather-server</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="cta-box" style="text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(255, 125, 0, 0.1), rgba(114, 9, 183, 0.1)); border-radius: 10px;">
+                    <h2>Ready to Apply Best Practices?</h2>
+                    <p>Now that you know how to build MCP servers, learn about best practices and real-world use cases.</p>
+                    <a href="../best-practices/index.html" class="btn btn-primary">Explore Best Practices</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">AI-Dev Education</div>
+                    <p>An educational resource for AI-assisted development and Model Context Protocol (MCP).</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../introduction/index.html">Introduction</a></li>
+                        <li><a href="../understanding-mcp/index.html">Understanding MCP</a></li>
+                        <li><a href="../integrating-mcp/index.html">Integration</a></li>
+                        <li><a href="index.html">Building Servers</a></li>
+                        <li><a href="../best-practices/index.html">Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://docs.codeium.com/getstarted/overview" target="_blank">Codeium Overview</a></li>
+                        <li><a href="https://docs.codeium.com/windsurf/mcp" target="_blank">Windsurf MCP Integration</a></li>
+                        <li><a href="https://www.aihero.dev/mcp-server-from-a-single-typescript-file" target="_blank">AI Hero MCP Server</a></li>
+                        <li><a href="https://docs.cursor.com/get-started/welcome" target="_blank">Cursor Welcome</a></li>
+                        <li><a href="https://docs.cursor.com/context/model-context-protocol" target="_blank">Cursor MCP</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 AI-Dev Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button">
+            <i class="fas fa-comment"></i>
+        </div>
+    </div>
+
+    <script src="../../utils/main.js"></script>
+</body>
+</html>
