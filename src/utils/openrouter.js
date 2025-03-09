@@ -2,7 +2,7 @@
 // This file is included in .gitignore to prevent exposing API keys
 
 // Replace this with your actual OpenRouter API key
-const OPENROUTER_API_KEY = "YOUR_OPENROUTER_API_KEY";
+const OPENROUTER_API_KEY = "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";
 
 // OpenRouter API endpoint
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
