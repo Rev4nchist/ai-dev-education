@@ -1,4 +1,11 @@
 {
+  "version": 2,
   "outputDirectory": "src",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/pages/(.*)", "dest": "/pages/$1" },
+    { "src": "/(.*)", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 } 
