@@ -9,10 +9,11 @@ This website serves as a simple, open resource to educate users about AI-assiste
 ## Features
 
 - **Comprehensive Content**: Five focused sections covering AI-assisted development and MCP
-- **Interactive Chatbot**: Powered by OpenRouter.ai to answer technical questions
-- **Responsive Design**: Works seamlessly on all devices
-- **Search Functionality**: Easily find content across the site
-- **Modern UI**: Engaging orangey-blue-purple color scheme on a light background
+- **Modern UI Components**: Engaging hero sections, feature cards, and animations
+- **Responsive Design**: Works seamlessly on all devices (mobile, tablet, and desktop)
+- **Accessibility Features**: Skip links, keyboard navigation, and ARIA attributes
+- **Interactive Elements**: Tabbed interfaces, scroll animations, and hover effects
+- **Chatbot Integration**: Powered by OpenRouter.ai to answer technical questions (coming soon)
 
 ## Content Structure
 
@@ -44,8 +45,9 @@ This website serves as a simple, open resource to educate users about AI-assiste
 ## Getting Started
 
 1. Clone this repository
-2. Open `src/index.html` in your browser to view the site locally
-3. Add your OpenRouter API key to `src/utils/openrouter.js` to enable the chatbot
+2. Install dependencies: `npm install`
+3. Start the Express server: `npm run start:express`
+4. Visit `http://localhost:3000` in your browser
 
 ## Development
 
@@ -65,37 +67,97 @@ ai-dev-education/
 │   │   └── best-practices/
 │   ├── styles/
 │   │   ├── main.css
-│   │   └── main.min.css
+│   │   ├── layout-improvements.css
+│   │   └── modern-components.css
 │   ├── utils/
 │   │   ├── main.js
-│   │   ├── main.min.js
-│   │   ├── openrouter.js
-│   │   └── chatbot.js
+│   │   ├── chatbot.js
+│   │   └── scroll-animations.js
 │   └── index.html
+├── tests/
+│   ├── unit/
+│   ├── puppeteer/
+│   ├── improvement-check/
+│   ├── content-analysis/
+│   └── layout-analysis/
+├── server.js
+├── package.json
+├── jest.config.js
+├── .eslintrc.js
+├── project_rules/
 ├── .gitignore
-├── README.md
-└── todo.md
+└── README.md
 ```
 
-### Performance Optimization
+### Running the Project
 
-For production use, the site includes minified CSS and JavaScript files:
-- `src/styles/main.min.css`
-- `src/utils/main.min.js`
-- `src/index.optimized.html` (references the minified resources)
+The project can be run in two ways:
+
+1. **Express Server** (Recommended):
+   ```
+   npm run start:express
+   ```
+   This starts an Express server on port 3000 and serves the files from the `src` directory.
+
+2. **Live Server** (Development):
+   ```
+   npm run start:dev
+   ```
+   This starts a live-server instance with hot reloading for development.
+
+### Testing
+
+The project uses Jest for unit testing and Puppeteer for UI testing:
+
+```
+npm test
+```
+
+To run specific test files:
+
+```
+npm test -- tests/unit/content-structure.test.js
+```
+
+### UI Components
+
+The website features modern UI components:
+
+- **Hero Sections**: Gradient backgrounds with animations and badges
+- **Feature Cards**: Interactive cards with icons and hover effects
+- **Tabbed Interfaces**: Clean, accessible tab navigation
+- **Scroll Animations**: Elements animate as they enter the viewport
+- **Responsive Layouts**: Optimized for mobile, tablet, and desktop
+
+### Accessibility Features
+
+The website includes several accessibility enhancements:
+
+- Skip-to-content links for keyboard navigation
+- Enhanced focus styles for interactive elements
+- Proper heading hierarchy and semantic HTML
+- ARIA attributes for interactive components
+- Sufficient color contrast for readability
 
 ## Customization
 
-### Chatbot Integration
-
-The website includes a chatbot powered by OpenRouter.ai. To enable it:
-
-1. Get an API key from [OpenRouter.ai](https://openrouter.ai/)
-2. Add your API key to `src/utils/openrouter.js`
-
 ### Styling
 
-The website uses a custom color scheme with orangey-blue-purple gradients on a light background. You can customize the colors by modifying the CSS variables in `src/styles/main.css`.
+The website uses three main CSS files:
+
+1. `main.css`: Base styles and variables
+2. `layout-improvements.css`: Spacing, structure, and responsive layouts
+3. `modern-components.css`: UI components and animations
+
+You can customize the colors by modifying the CSS variables in `src/styles/main.css`.
+
+### Animation
+
+Scroll animations are controlled by `src/utils/scroll-animations.js`. You can:
+
+- Add the `scroll-fade-in`, `scroll-fade-in-left`, `scroll-fade-in-right`, or `scroll-scale-in` classes to elements
+- Use delay classes (`delay-100` through `delay-500`) to stagger animations
+- Call the `applyScrollAnimations()` function for dynamically loaded content
 
 ## License
 

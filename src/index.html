@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/layout-improvements.css">
+    <link rel="stylesheet" href="styles/modern-components.css">
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -27,64 +32,73 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
+    <!-- Modern Hero Section -->
+    <section class="hero-modern">
+        <div class="container hero-modern-content">
+            <div class="hero-modern-badge">New Release</div>
             <h1>AI-Assisted Development</h1>
-            <p>Discover the power of AI in modern development workflows with Model Context Protocol (MCP)</p>
-            <a href="pages/introduction/index.html" class="btn btn-primary">Get Started</a>
-            <a href="#features" class="btn btn-secondary">Learn More</a>
+            <p class="hero-modern-subtitle">Discover the power of AI in modern development workflows</p>
+            <p class="hero-modern-description">Learn how Model Context Protocol (MCP) can revolutionize your development process and boost productivity</p>
+            <div class="hero-modern-actions">
+                <a href="pages/introduction/index.html" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
         </div>
+        <div class="hero-modern-glow"></div>
     </section>
 
     <!-- Features Section -->
     <section class="section" id="features">
         <div class="container">
-            <h2 class="text-center">Explore AI-Assisted Development</h2>
-            <p class="text-center">Discover how AI and MCP can revolutionize your development workflow</p>
+            <h2 class="text-center scroll-fade-in">Explore AI-Assisted Development</h2>
+            <p class="text-center scroll-fade-in delay-100">Discover how AI and MCP can revolutionize your development workflow</p>
             
-            <div class="features">
-                <div class="card">
-                    <h3 class="card-title">Introduction to AI-Assisted Development</h3>
-                    <p>Learn about tools like Codeium and Cursor, showcasing AI's role in modern coding.</p>
-                    <a href="pages/introduction/index.html" class="btn btn-secondary">Learn More</a>
+            <div class="features" id="main-content">
+                <div class="feature-card scroll-fade-in-left delay-200">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="feature-card-title">Introduction to AI-Assisted Development</h3>
+                    <p class="feature-card-description">Learn about tools like Codeium and Cursor, showcasing AI's role in modern coding.</p>
+                    <a href="pages/introduction/index.html" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <div class="card">
-                    <h3 class="card-title">Understanding MCP</h3>
-                    <p>Explore MCP as the open protocol powering AI tool integration securely and efficiently.</p>
-                    <a href="pages/understanding-mcp/index.html" class="btn btn-secondary">Learn More</a>
+                <div class="feature-card scroll-fade-in-left delay-300">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-card-title">Understanding MCP</h3>
+                    <p class="feature-card-description">Explore the Model Context Protocol and how it enables AI-assisted development.</p>
+                    <a href="pages/understanding-mcp/index.html" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <div class="card">
-                    <h3 class="card-title">Integrating MCP</h3>
-                    <p>Step-by-step integration guides with Windsurf (Cascade chatbot) and Cursor.</p>
-                    <a href="pages/integrating-mcp/index.html" class="btn btn-secondary">Learn More</a>
+                <div class="feature-card scroll-fade-in-right delay-400">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="feature-card-title">Integrating MCP</h3>
+                    <p class="feature-card-description">Implement MCP in your development tools and workflows for enhanced productivity.</p>
+                    <a href="pages/integrating-mcp/index.html" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card scroll-fade-in-right delay-500">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="feature-card-title">Building MCP Servers</h3>
+                    <p class="feature-card-description">Create your own MCP servers to power AI-assisted development tools.</p>
+                    <a href="pages/building-mcp-servers/index.html" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card scroll-scale-in delay-500">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="feature-card-title">Best Practices</h3>
+                    <p class="feature-card-description">Learn the best practices for AI-assisted development and MCP implementation.</p>
+                    <a href="pages/best-practices/index.html" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <div class="features" style="margin-top: 2rem;">
-                <div class="card">
-                    <h3 class="card-title">Building MCP Servers</h3>
-                    <p>A concise guide to creating an MCP server, spotlighting TypeScript implementation.</p>
-                    <a href="pages/building-mcp-servers/index.html" class="btn btn-secondary">Learn More</a>
-                </div>
-                
-                <div class="card">
-                    <h3 class="card-title">Best Practices & Use Cases</h3>
-                    <p>Guidelines for leveraging AI effectively in development with real-world success stories.</p>
-                    <a href="pages/best-practices/index.html" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(255, 125, 0, 0.1), rgba(114, 9, 183, 0.1));">
-        <div class="container" style="text-align: center;">
-            <h2>Ready to Transform Your Development Workflow?</h2>
-            <p>Dive into AI-assisted development and discover how MCP can enhance your productivity.</p>
-            <a href="pages/introduction/index.html" class="btn btn-primary">Get Started Now</a>
         </div>
     </section>
 
@@ -94,11 +108,10 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">AI-Dev Education</div>
-                    <p>An educational resource for AI-assisted development and Model Context Protocol (MCP).</p>
+                    <p>Empowering developers with AI-assisted development knowledge and tools.</p>
                 </div>
-                
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Resources</h4>
                     <ul>
                         <li><a href="pages/introduction/index.html">Introduction</a></li>
                         <li><a href="pages/understanding-mcp/index.html">Understanding MCP</a></li>
@@ -107,21 +120,17 @@
                         <li><a href="pages/best-practices/index.html">Best Practices</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-links">
-                    <h4>Resources</h4>
+                    <h4>Connect</h4>
                     <ul>
-                        <li><a href="https://docs.codeium.com/getstarted/overview" target="_blank">Codeium Overview</a></li>
-                        <li><a href="https://docs.codeium.com/windsurf/mcp" target="_blank">Windsurf MCP Integration</a></li>
-                        <li><a href="https://www.aihero.dev/mcp-server-from-a-single-typescript-file" target="_blank">AI Hero MCP Server</a></li>
-                        <li><a href="https://docs.cursor.com/get-started/welcome" target="_blank">Cursor Welcome</a></li>
-                        <li><a href="https://docs.cursor.com/context/model-context-protocol" target="_blank">Cursor MCP</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Discord</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>&copy; 2025 AI-Dev Education. All rights reserved.</p>
+                &copy; 2023 AI-Dev Education. All rights reserved.
             </div>
         </div>
     </footer>
@@ -133,6 +142,8 @@
         </div>
     </div>
 
-    <script type="module" src="utils/main.js"></script>
+    <script src="utils/main.js"></script>
+    <script src="utils/chatbot.js"></script>
+    <script src="utils/scroll-animations.js"></script>
 </body>
 </html>

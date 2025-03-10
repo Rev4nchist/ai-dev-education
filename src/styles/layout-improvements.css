@@ -1,0 +1,173 @@
+/**
+ * AI Dev Education - Layout Improvements
+ * This file contains CSS improvements for component orientation and padding
+ * To use: Import this file after main.css
+ */
+
+/* Container Improvements */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* Increased from 1rem for better readability */
+}
+
+/* Section Spacing Improvements */
+.section {
+  padding: 4rem 0; /* Reduced from 5rem for better rhythm */
+}
+
+.content-section {
+  padding: 3rem 0; /* Increased from 2rem for consistency */
+}
+
+/* Add consistent spacing between sections */
+section + section {
+  margin-top: 2rem;
+}
+
+/* Card Component Improvements */
+.card {
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.75rem; /* Slightly reduced from 2rem */
+  margin-bottom: 2rem;
+  height: 100%; /* Make all cards in a row the same height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push buttons to bottom of cards */
+.card .btn {
+  margin-top: auto;
+}
+
+/* Navigation Spacing Improvements */
+nav ul li {
+  margin: 0 1rem; /* Change from left margin only to even spacing */
+}
+
+nav ul li:first-child {
+  margin-left: 0;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+/* Step Container Improvements */
+.step-container {
+  margin-bottom: 2.5rem; /* Reduced from 3rem */
+}
+
+.step {
+  padding: 1.75rem 2rem; /* Reduced top/bottom padding */
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
+}
+
+/* Heading Spacing Improvements */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1.25rem; /* Increased from 1rem */
+}
+
+h1 + p, h2 + p, h3 + p {
+  margin-top: -0.5rem; /* Tighten spacing between headings and paragraphs */
+}
+
+/* Add more space before headings that follow paragraphs */
+p + h2, p + h3 {
+  margin-top: 2rem;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem; /* Slightly reduced for tablets but still larger than current */
+  }
+  
+  nav ul {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1.5rem; /* Increased from 1rem */
+  }
+  
+  nav ul li {
+    margin: 0; /* Remove horizontal margins on mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 6rem 0 3rem; /* Reduced from 7rem 0 4rem */
+  }
+  
+  .btn + .btn {
+    margin-top: 0.75rem; /* Add specific spacing between stacked buttons */
+  }
+  
+  .features {
+    gap: 1.5rem; /* Reduced from 2rem */
+  }
+  
+  .card {
+    padding: 1.5rem; /* Further reduced padding on mobile */
+  }
+}
+
+/* Tablet Specific Optimizations */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .content-section {
+    padding: 2.5rem 0;
+  }
+  
+  .hero-modern-content {
+    padding: 3.5rem 0;
+  }
+  
+  .hero-modern h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-modern-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-links:last-child {
+    grid-column: span 2;
+    margin-top: 1rem;
+  }
+}
+
+/* Additional Responsive Improvements */
+@media (max-width: 992px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+} 

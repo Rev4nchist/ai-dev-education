@@ -348,3 +348,73 @@ footer {
     margin-bottom: 1rem;
   }
 }
+
+/* Accessibility Improvements */
+:focus {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.btn:focus, a:focus {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Increase contrast for better readability */
+body {
+    color: #333;
+}
+
+a {
+    text-decoration: underline;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.btn {
+    font-weight: 600;
+}
+
+/* Improve form element accessibility */
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Ensure sufficient color contrast */
+.hero-modern-badge {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Improve focus visibility for interactive elements */
+.feature-card:focus-within {
+    box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
+}
+
+.tab:focus {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: -3px;
+}
+
+/* Ensure text remains visible during webfont load */
+html {
+    font-display: swap;
+}
