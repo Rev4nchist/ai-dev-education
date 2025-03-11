@@ -1,0 +1,228 @@
+{
+  "containers": [
+    {
+      "width": 1200,
+      "padding": "16px",
+      "margin": "0px 32.4px",
+      "maxWidth": "1200px"
+    },
+    {
+      "width": 800,
+      "padding": "0px 16px",
+      "margin": "0px 232.4px",
+      "maxWidth": "800px"
+    },
+    {
+      "width": 1200,
+      "padding": "0px 16px",
+      "margin": "0px 32.4px",
+      "maxWidth": "1200px"
+    },
+    {
+      "width": 1200,
+      "padding": "0px 16px",
+      "margin": "0px 32.4px",
+      "maxWidth": "1200px"
+    }
+  ],
+  "sections": [
+    {
+      "selector": "hero",
+      "paddingTop": "128px",
+      "paddingBottom": "80px",
+      "paddingLeft": "0px",
+      "paddingRight": "0px",
+      "marginTop": "0px",
+      "marginBottom": "0px",
+      "height": 484.1499938964844
+    },
+    {
+      "selector": "section",
+      "paddingTop": "80px",
+      "paddingBottom": "80px",
+      "paddingLeft": "0px",
+      "paddingRight": "0px",
+      "marginTop": "0px",
+      "marginBottom": "0px",
+      "height": 5933.64990234375
+    }
+  ],
+  "cards": [],
+  "headingSpacing": [
+    {
+      "element": "H1",
+      "marginTop": "0px",
+      "marginBottom": "24px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H3",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H2",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "16px"
+    },
+    {
+      "element": "H4",
+      "marginTop": "0px",
+      "marginBottom": "0px"
+    }
+  ],
+  "navigation": {
+    "padding": "0px",
+    "height": 25.600000381469727,
+    "itemSpacing": "0px"
+  }
+}

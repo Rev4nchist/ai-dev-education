@@ -1,0 +1,100 @@
+{
+  "url": "http://localhost:8080/pages/understanding-mcp/index.html",
+  "title": "Understanding MCP | AI-Dev Education",
+  "headings": {
+    "h1": [
+      "Understanding MCP"
+    ],
+    "h2": [
+      "What is the Model Context Protocol (MCP)?",
+      "How MCP Works",
+      "Key Components of MCP",
+      "Why MCP Matters",
+      "MCP in Practice: Real-World Applications",
+      "MCP Implementation in Popular Tools",
+      "Getting Started with MCP",
+      "Ready to Integrate MCP?"
+    ],
+    "h3": [
+      "Tools",
+      "Prompts",
+      "Resources",
+      "MCP Transports",
+      "Standardization",
+      "Security",
+      "Flexibility",
+      "Extensibility",
+      "Strategic Value for Executives",
+      "Cursor",
+      "Windsurf (Cascade)"
+    ],
+    "h4": [
+      "MCP Hosts",
+      "MCP Clients",
+      "MCP Server 1",
+      "MCP Server 2",
+      "MCP Server 3",
+      "Local Data Sources",
+      "Remote Services",
+      "Code Repository Integration",
+      "Database Access",
+      "Documentation Generation",
+      "API Integration",
+      "Quick Links",
+      "Resources",
+      "AI Assistant"
+    ],
+    "h5": [],
+    "h6": []
+  },
+  "contentSections": [
+    {
+      "heading": "Understanding MCP",
+      "paragraphCount": 1,
+      "wordCount": 12,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "What is the Model Context Protocol (MCP)?",
+      "paragraphCount": 44,
+      "wordCount": 881,
+      "hasImages": false,
+      "hasLists": true,
+      "hasCode": true
+    }
+  ],
+  "navigationLinks": [
+    {
+      "text": "Introduction",
+      "href": "../introduction/index.html"
+    },
+    {
+      "text": "Understanding MCP",
+      "href": "index.html"
+    },
+    {
+      "text": "Integration",
+      "href": "../integrating-mcp/index.html"
+    },
+    {
+      "text": "Building Servers",
+      "href": "../building-mcp-servers/index.html"
+    },
+    {
+      "text": "Best Practices",
+      "href": "../best-practices/index.html"
+    }
+  ],
+  "summary": {
+    "h1Count": 1,
+    "h2Count": 8,
+    "h3Count": 11,
+    "sectionCount": 2,
+    "totalWordCount": 893,
+    "sectionsWithImages": 0,
+    "sectionsWithLists": 1,
+    "sectionsWithCode": 1
+  }
+}

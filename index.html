@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puppeteer Test Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background-color: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      margin: 0 5px;
+    }
+    nav a:hover {
+      background-color: #eaeaea;
+    }
+    .content {
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input, select, button {
+      padding: 8px;
+      margin: 5px 0;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .results {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Puppeteer Test Application</h1>
+    <p>A simple web application for testing Puppeteer's capabilities</p>
+  </header>
+  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="form.html">Form Testing</a>
+    <a href="elements.html">UI Elements</a>
+  </nav>
+  
+  <div class="content">
+    <h2>Welcome to the Puppeteer Testing Application</h2>
+    <p>This is a simple application to test various Puppeteer features including:</p>
+    <ul>
+      <li>Navigation between pages</li>
+      <li>Taking screenshots</li>
+      <li>Clicking on elements</li>
+      <li>Form filling and submission</li>
+      <li>Selecting from dropdowns</li>
+    </ul>
+    <p>Use the navigation above to explore different testing scenarios.</p>
+    
+    <div>
+      <h3>Simple Click Test</h3>
+      <button id="clickButton">Click Me</button>
+      <div id="clickResult" class="results">Button was clicked!</div>
+    </div>
+  </div>
+
+  <script>
+    // Simple click handler
+    document.getElementById('clickButton').addEventListener('click', function() {
+      const resultDiv = document.getElementById('clickResult');
+      resultDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html> 

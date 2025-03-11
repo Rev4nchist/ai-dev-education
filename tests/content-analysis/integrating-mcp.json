@@ -1,0 +1,100 @@
+{
+  "url": "http://localhost:8080/pages/integrating-mcp/index.html",
+  "title": "Integrating MCP with Development Tools | AI-Dev Education",
+  "headings": {
+    "h1": [
+      "Integrating MCP with Development Tools"
+    ],
+    "h2": [
+      "Getting Started with MCP Integration",
+      "Integrating MCP with Windsurf's Cascade",
+      "Integrating MCP with Cursor",
+      "Comparing MCP Integration: Windsurf vs. Cursor",
+      "Common MCP Integration Challenges",
+      "Ready to Build Your Own MCP Server?"
+    ],
+    "h3": [
+      "Prerequisites",
+      "Accessing MCP Configuration in Windsurf",
+      "Configuring an MCP Server",
+      "Activating the MCP Server",
+      "Using MCP with Cascade",
+      "Example MCP Servers for Windsurf",
+      "Prerequisites",
+      "Accessing MCP Settings in Cursor",
+      "Configuring an MCP Server",
+      "Project-specific MCP Configuration",
+      "Using MCP Tools in Cursor",
+      "Building a Custom MCP Server for Cursor",
+      "Project Setup",
+      "Configure TypeScript",
+      "Implement MCP Server",
+      "Build and Configure",
+      "When to Choose Windsurf",
+      "When to Choose Cursor"
+    ],
+    "h4": [
+      "Neon Database MCP Server",
+      "Web Search MCP Server",
+      "GitHub MCP Server",
+      "API Key Management",
+      "Server Compatibility",
+      "Debugging MCP Issues",
+      "Quick Links",
+      "Resources",
+      "AI Assistant"
+    ],
+    "h5": [],
+    "h6": []
+  },
+  "contentSections": [
+    {
+      "heading": "Integrating MCP with Development Tools",
+      "paragraphCount": 1,
+      "wordCount": 11,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "Getting Started with MCP Integration",
+      "paragraphCount": 40,
+      "wordCount": 700,
+      "hasImages": false,
+      "hasLists": true,
+      "hasCode": true
+    }
+  ],
+  "navigationLinks": [
+    {
+      "text": "Introduction",
+      "href": "../introduction/index.html"
+    },
+    {
+      "text": "Understanding MCP",
+      "href": "../understanding-mcp/index.html"
+    },
+    {
+      "text": "Integration",
+      "href": "index.html"
+    },
+    {
+      "text": "Building Servers",
+      "href": "../building-mcp-servers/index.html"
+    },
+    {
+      "text": "Best Practices",
+      "href": "../best-practices/index.html"
+    }
+  ],
+  "summary": {
+    "h1Count": 1,
+    "h2Count": 6,
+    "h3Count": 18,
+    "sectionCount": 2,
+    "totalWordCount": 711,
+    "sectionsWithImages": 0,
+    "sectionsWithLists": 1,
+    "sectionsWithCode": 1
+  }
+}

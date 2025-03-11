@@ -1,0 +1,86 @@
+[
+  {
+    "name": "homepage",
+    "title": "AI-Assisted Development | Home",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 2,
+      "h3Count": 5,
+      "sectionCount": 3,
+      "totalWordCount": 93,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 0,
+      "sectionsWithCode": 0
+    }
+  },
+  {
+    "name": "introduction",
+    "title": "Introduction to AI-Assisted Development | AI-Dev Education",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 7,
+      "h3Count": 6,
+      "sectionCount": 2,
+      "totalWordCount": 676,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 1,
+      "sectionsWithCode": 0
+    }
+  },
+  {
+    "name": "understanding-mcp",
+    "title": "Understanding MCP | AI-Dev Education",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 8,
+      "h3Count": 11,
+      "sectionCount": 2,
+      "totalWordCount": 893,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 1,
+      "sectionsWithCode": 1
+    }
+  },
+  {
+    "name": "integrating-mcp",
+    "title": "Integrating MCP with Development Tools | AI-Dev Education",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 6,
+      "h3Count": 18,
+      "sectionCount": 2,
+      "totalWordCount": 711,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 1,
+      "sectionsWithCode": 1
+    }
+  },
+  {
+    "name": "building-mcp-servers",
+    "title": "Building MCP Servers | AI-Dev Education",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 9,
+      "h3Count": 14,
+      "sectionCount": 2,
+      "totalWordCount": 687,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 1,
+      "sectionsWithCode": 1
+    }
+  },
+  {
+    "name": "best-practices",
+    "title": "Best Practices and Use Cases | AI-Dev Education",
+    "summary": {
+      "h1Count": 1,
+      "h2Count": 6,
+      "h3Count": 13,
+      "sectionCount": 2,
+      "totalWordCount": 822,
+      "sectionsWithImages": 0,
+      "sectionsWithLists": 1,
+      "sectionsWithCode": 0
+    }
+  }
+]

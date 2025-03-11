@@ -1,0 +1,85 @@
+{
+  "url": "http://localhost:8080",
+  "title": "AI-Assisted Development | Home",
+  "headings": {
+    "h1": [
+      "AI-Assisted Development"
+    ],
+    "h2": [
+      "Explore AI-Assisted Development",
+      "Ready to Transform Your Development Workflow?"
+    ],
+    "h3": [
+      "Introduction to AI-Assisted Development",
+      "Understanding MCP",
+      "Integrating MCP",
+      "Building MCP Servers",
+      "Best Practices & Use Cases"
+    ],
+    "h4": [
+      "Quick Links",
+      "Resources",
+      "AI Assistant"
+    ],
+    "h5": [],
+    "h6": []
+  },
+  "contentSections": [
+    {
+      "heading": "AI-Assisted Development",
+      "paragraphCount": 1,
+      "wordCount": 14,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "Explore AI-Assisted Development",
+      "paragraphCount": 6,
+      "wordCount": 67,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "Ready to Transform Your Development Workflow?",
+      "paragraphCount": 1,
+      "wordCount": 12,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    }
+  ],
+  "navigationLinks": [
+    {
+      "text": "Introduction",
+      "href": "pages/introduction/index.html"
+    },
+    {
+      "text": "Understanding MCP",
+      "href": "pages/understanding-mcp/index.html"
+    },
+    {
+      "text": "Integration",
+      "href": "pages/integrating-mcp/index.html"
+    },
+    {
+      "text": "Building Servers",
+      "href": "pages/building-mcp-servers/index.html"
+    },
+    {
+      "text": "Best Practices",
+      "href": "pages/best-practices/index.html"
+    }
+  ],
+  "summary": {
+    "h1Count": 1,
+    "h2Count": 2,
+    "h3Count": 5,
+    "sectionCount": 3,
+    "totalWordCount": 93,
+    "sectionsWithImages": 0,
+    "sectionsWithLists": 0,
+    "sectionsWithCode": 0
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "url": "http://localhost:8080/pages/introduction/index.html",
+  "title": "Introduction to AI-Assisted Development | AI-Dev Education",
+  "headings": {
+    "h1": [
+      "Introduction to AI-Assisted Development"
+    ],
+    "h2": [
+      "What is AI-Assisted Development?",
+      "Why AI-Assisted Development Matters",
+      "Leading AI Development Tools",
+      "Traditional vs. AI-Assisted Development",
+      "Getting Started with AI-Assisted Development",
+      "The Future of AI-Assisted Development",
+      "Ready to Explore Further?"
+    ],
+    "h3": [
+      "Enhanced Productivity",
+      "Reduced Cognitive Load",
+      "Accelerated Learning",
+      "Consistent Code Quality",
+      "Codeium: AI-Powered Development Assistant",
+      "Cursor: The Intelligent IDE"
+    ],
+    "h4": [
+      "Autocomplete",
+      "Chat",
+      "Command",
+      "Supercomplete",
+      "Agent",
+      "Tab",
+      "Composer",
+      "AI Commit Message",
+      "Quick Links",
+      "Resources",
+      "AI Assistant"
+    ],
+    "h5": [],
+    "h6": []
+  },
+  "contentSections": [
+    {
+      "heading": "Introduction to AI-Assisted Development",
+      "paragraphCount": 1,
+      "wordCount": 11,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "What is AI-Assisted Development?",
+      "paragraphCount": 27,
+      "wordCount": 665,
+      "hasImages": false,
+      "hasLists": true,
+      "hasCode": false
+    }
+  ],
+  "navigationLinks": [
+    {
+      "text": "Introduction",
+      "href": "index.html"
+    },
+    {
+      "text": "Understanding MCP",
+      "href": "../understanding-mcp/index.html"
+    },
+    {
+      "text": "Integration",
+      "href": "../integrating-mcp/index.html"
+    },
+    {
+      "text": "Building Servers",
+      "href": "../building-mcp-servers/index.html"
+    },
+    {
+      "text": "Best Practices",
+      "href": "../best-practices/index.html"
+    }
+  ],
+  "summary": {
+    "h1Count": 1,
+    "h2Count": 7,
+    "h3Count": 6,
+    "sectionCount": 2,
+    "totalWordCount": 676,
+    "sectionsWithImages": 0,
+    "sectionsWithLists": 1,
+    "sectionsWithCode": 0
+  }
+}

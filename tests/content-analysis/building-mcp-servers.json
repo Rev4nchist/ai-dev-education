@@ -1,0 +1,99 @@
+{
+  "url": "http://localhost:8080/pages/building-mcp-servers/index.html",
+  "title": "Building MCP Servers | AI-Dev Education",
+  "headings": {
+    "h1": [
+      "Building MCP Servers"
+    ],
+    "h2": [
+      "Introduction to Building MCP Servers",
+      "Prerequisites",
+      "Building a Simple MCP Server with TypeScript",
+      "Complete MCP Server Code",
+      "Advanced MCP Server Features",
+      "Best Practices for MCP Server Development",
+      "Project Structure for Larger MCP Servers",
+      "Deploying MCP Servers",
+      "Ready to Apply Best Practices?"
+    ],
+    "h3": [
+      "Customization",
+      "Security",
+      "Integration",
+      "Project Setup",
+      "Creating the Basic Server Structure",
+      "Defining Tool Schemas",
+      "Implementing Tool Functions",
+      "Registering Tools with the Server",
+      "Building and Running the Server",
+      "Connecting to an MCP Host",
+      "Local Deployment",
+      "Packaging as an npm Package",
+      "Deploying as a Service",
+      "Containerization"
+    ],
+    "h4": [
+      "For Claude Desktop:",
+      "For Cursor:",
+      "For Windsurf:",
+      "Error Handling",
+      "Authentication and API Keys",
+      "Streaming Responses",
+      "Quick Links",
+      "Resources",
+      "AI Assistant"
+    ],
+    "h5": [],
+    "h6": []
+  },
+  "contentSections": [
+    {
+      "heading": "Building MCP Servers",
+      "paragraphCount": 1,
+      "wordCount": 12,
+      "hasImages": false,
+      "hasLists": false,
+      "hasCode": false
+    },
+    {
+      "heading": "Introduction to Building MCP Servers",
+      "paragraphCount": 39,
+      "wordCount": 675,
+      "hasImages": false,
+      "hasLists": true,
+      "hasCode": true
+    }
+  ],
+  "navigationLinks": [
+    {
+      "text": "Introduction",
+      "href": "../introduction/index.html"
+    },
+    {
+      "text": "Understanding MCP",
+      "href": "../understanding-mcp/index.html"
+    },
+    {
+      "text": "Integration",
+      "href": "../integrating-mcp/index.html"
+    },
+    {
+      "text": "Building Servers",
+      "href": "index.html"
+    },
+    {
+      "text": "Best Practices",
+      "href": "../best-practices/index.html"
+    }
+  ],
+  "summary": {
+    "h1Count": 1,
+    "h2Count": 9,
+    "h3Count": 14,
+    "sectionCount": 2,
+    "totalWordCount": 687,
+    "sectionsWithImages": 0,
+    "sectionsWithLists": 1,
+    "sectionsWithCode": 1
+  }
+}

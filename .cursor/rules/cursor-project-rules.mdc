@@ -1,0 +1,107 @@
+---
+description: how cursor should build this site
+globs: 
+alwaysApply: true
+---
+## Project Overview
+
+*   **Type:** cursor_project_rules
+*   **Description:** The Model Context Protocol (MCP) website is envisioned as a comprehensive knowledge hub and interactive learning platform tailored for developers, engineers, and CTOs. It focuses on role-based personalization, interactive learning tools (like a code playground, architecture explorer, and configuration generator), comprehensive technical guides, and community features. The design emphasizes technical precision through a professional aesthetic, utilizing a deep blue and teal palette, clear typography (Inter and Fira Code), and ample white space to facilitate readability and ease of navigation.
+*   **Primary Goal:** Build a role-personalized platform that not only delivers in-depth technical documentation and interactive learning experiences but also inspires practical experimentation with AI-powered development tools, as outlined in the project requirements document (PRD).
+
+## Project Structure
+
+### Framework-Specific Routing
+
+*   **Directory Rules:**
+
+    *   `Next js [App Router]`: Enforce the use of the `app/` directory with nested route folders for all components and pages.
+    *   Example 1: "Next.js 14 (App Router)" → `app/[route]/page.tsx` conventions
+    *   Example 2: "Next.js (Pages Router)" → `pages/[route].tsx` pattern
+    *   Example 3: "React Router 6" → `src/routes/` with `createBrowserRouter`
+
+### Core Directories
+
+*   **Versioned Structure:**
+
+    *   `app`: Houses primary Next.js components and pages including API routes and layouts.
+    *   Example 1: `app/api` → "Next.js 14 API routes with Route Handlers"
+    *   Example 2: `src/views` → "Vue 3 composition API components" (if applicable in other tech stacks)
+
+### Key Files
+
+*   **Stack-Versioned Patterns:**
+
+    *   `app/dashboard/layout.tsx`: Implements Next.js 14 root layouts for authenticated areas
+    *   Example 2: `pages/_app.js`: Customization point for Next.js Pages Router projects
+
+## Tech Stack Rules
+
+*   **Version Enforcement:**
+
+    *   `next@14`: Enforce the use of the App Router; avoid using deprecated methods like `getInitialProps`.
+    *   `tailwindcss@latest`: Follow the utility-first principles and configure responsiveness via the Tailwind config file.
+    *   `typescript@latest`: Leverage strict type checking and proper interfaces to maintain code robustness.
+    *   `firebase@latest`: Initialize using modular patterns for scalability and manage backend integration securely.
+    *   `shadcn-ui@latest`: Use pre-built customizable UI components adhering to design system guidelines.
+    *   `clerk-auth@latest`: Implement basic custom login flows with the awareness of future enhancements such as SSO.
+
+## PRD Compliance
+
+*   **Non-Negotiable:**
+
+    *   "Role-based personalization for Developers, Engineers, and CTOs." - The platform must deliver tailored content pathways and interactive components specific to each role as detailed in the PRD.
+    *   The system must integrate interactive tools and maintain a seamless, intuitive navigation flow.
+
+## App Flow Integration
+
+*   **Stack-Aligned Flow:**
+
+    *   Example: "Next.js 14 Auth Flow → `app/auth/login/page.tsx` uses server actions" to manage user authentication and role-based redirection.
+    *   Ensure that page transitions (from home to fundamentals to interactive tools) are smooth and maintain state as per the outlined user journey.
+
+## Best Practices
+
+*   **Next js**
+
+    *   Use latest conventions with the App Router (if using Next.js 14) to benefit from reduced bundle sizes and enhanced server-side rendering.
+    *   Keep a clear separation between server and client components.
+    *   Utilize dynamic routing and lazy loading for enhanced performance.
+
+*   **Tailwind CSS**
+
+    *   Adhere to the utility-first approach to streamline styling and maintain consistency across components.
+    *   Configure and leverage responsive design breakpoints within the Tailwind configuration.
+    *   Minimize custom CSS to fully exploit Tailwind’s capabilities and avoid style conflicts.
+
+*   **Typescript**
+
+    *   Employ strict type checking to catch potential errors early in the development process.
+    *   Maintain clear interface definitions to improve code readability and scalability.
+    *   Utilize type inference and utility types to reduce redundant code while leveraging modern TypeScript features.
+
+*   **Firebase**
+
+    *   Initialize Firebase with modular imports to ensure scalability and improved performance.
+    *   Secure configuration and environment management are essential, even in prototypes.
+    *   Regularly monitor usage and performance to guide potential migration or optimization strategies.
+
+*   **Shadcn UI**
+
+    *   Follow the provided component patterns to maintain design consistency throughout the application.
+    *   Reuse and extend components where possible to accelerate development time.
+    *   Keep component customization minimal to ensure maintainability and adherence to the design system.
+
+*   **Clerk Auth**
+
+    *   Implement a simple, clean authentication flow suitable for custom login systems with future scalability in mind.
+    *   Maintain clear separation between authentication logic and presentation components.
+    *   Prepare the codebase for potential upgrades, including SSO or enhanced security measures as required in future iterations.
+
+## Rules
+
+*   Derive folder/file patterns directly from the tech stack documentation and the versioning of each tool.
+*   If Next.js 14 App Router is used: enforce the `app/` directory with nested route folders exclusively; no mingling with a `pages/` folder.
+*   For Next.js Pages Router projects: maintain a flat `pages/*.tsx` structure.
+*   Mirror this logic for other frameworks such as React Router, SvelteKit, etc.
+*   Never mix version patterns (e.g., no `pages/` structure in App Router projects).
