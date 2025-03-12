@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Component Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .message {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    .user {
+      background-color: #e6f7ff;
+      margin-left: 20px;
+    }
+    .assistant {
+      background-color: #f6f6f6;
+      margin-right: 20px;
+    }
+    button {
+      background-color: #1677ff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    button:hover {
+      background-color: #4096ff;
+    }
+    .log {
+      height: 200px;
+      overflow-y: scroll;
+      background-color: #f6f6f6;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      border: 1px solid #ddd;
+    }
+    .log-entry {
+      margin-bottom: 4px;
+    }
+    .error {
+      color: #ff4d4f;
+    }
+    .success {
+      color: #52c41a;
+    }
+    input {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-right: 8px;
+      width: 70%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chat Component Test</h1>
+  
+  <div class="container">
+    <h2>Chat Interface</h2>
+    <div id="messages"></div>
+    <div style="display: flex; margin-top: 20px;">
+      <input type="text" id="messageInput" placeholder="Type a message...">
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h2>Test Controls</h2>
+    <button id="createChat">Create New Chat</button>
+    <button id="loadChat">Load Chat</button>
+    <button id="clearStorage">Clear Storage</button>
+    <button id="simulateCycle">Simulate Update Cycle</button>
+    <button id="simulateLoop">Simulate 10 Updates</button>
+  </div>
+  
+  <div class="container">
+    <h2>Logs</h2>
+    <div id="log" class="log"></div>
+  </div>
+
+  <script>
+    // Utility to log messages
+    function log(message, type = 'info') {
+      const logElement = document.getElementById('log');
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${type}`;
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      logElement.appendChild(entry);
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    // Display messages in the UI
+    function displayMessages(messages) {
+      const messagesElement = document.getElementById('messages');
+      messagesElement.innerHTML = '';
+      
+      messages.forEach(message => {
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${message.role}`;
+        messageElement.textContent = `${message.role}: ${message.content}`;
+        messagesElement.appendChild(messageElement);
+      });
+    }
+    
+    // State management
+    let activeChatId = null;
+    let updateCycleCount = 0;
+    const updateInProgressRef = { current: false };
+    
+    // Create a new chat
+    document.getElementById('createChat').addEventListener('click', () => {
+      if (updateInProgressRef.current) {
+        log('Update in progress, please wait...', 'error');
+        return;
+      }
+      
+      updateInProgressRef.current = true;
+      const chatId = `chat-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      activeChatId = chatId;
+      
+      // Initialize with empty messages
+      localStorage.setItem(`ai-dev-education-chat-${chatId}`, JSON.stringify([]));
+      localStorage.setItem(`ai-dev-education-chat-${chatId}-last-update`, Date.now().toString());
+      
+      log(`Created new chat with ID: ${chatId}`, 'success');
+      displayMessages([]);
+      
+      // Release lock
+      setTimeout(() => {
+        updateInProgressRef.current = false;
+      }, 50);
+    });
+    
+    // Load chat
+    document.getElementById('loadChat').addEventListener('click', () => {
+      if (updateInProgressRef.current) {
+        log('Update in progress, please wait...', 'error');
+        return;
+      }
+      
+      if (!activeChatId) {
+        log('No active chat. Create one first.', 'error');
+        return;
+      }
+      
+      updateInProgressRef.current = true;
+      log(`Loading chat: ${activeChatId}`);
+      
+      try {
+        const messagesJson = localStorage.getItem(`ai-dev-education-chat-${activeChatId}`);
+        if (messagesJson) {
+          const messages = JSON.parse(messagesJson);
+          displayMessages(messages);
+          log(`Loaded ${messages.length} messages`, 'success');
+        } else {
+          log('No messages found', 'error');
+        }
+      } catch (error) {
+        log(`Error loading messages: ${error.message}`, 'error');
+      } finally {
+        // Release lock
+        setTimeout(() => {
+          updateInProgressRef.current = false;
+        }, 50);
+      }
+    });
+    
+    // Clear storage
+    document.getElementById('clearStorage').addEventListener('click', () => {
+      localStorage.clear();
+      activeChatId = null;
+      displayMessages([]);
+      log('Storage cleared', 'success');
+    });
+    
+    // Send message
+    document.getElementById('sendButton').addEventListener('click', () => {
+      if (updateInProgressRef.current) {
+        log('Update in progress, please wait...', 'error');
+        return;
+      }
+      
+      if (!activeChatId) {
+        log('No active chat. Create one first.', 'error');
+        return;
+      }
+      
+      const input = document.getElementById('messageInput');
+      const content = input.value.trim();
+      
+      if (!content) {
+        log('Message cannot be empty', 'error');
+        return;
+      }
+      
+      updateInProgressRef.current = true;
+      
+      try {
+        // Get current messages
+        const messagesJson = localStorage.getItem(`ai-dev-education-chat-${activeChatId}`);
+        const currentMessages = messagesJson ? JSON.parse(messagesJson) : [];
+        
+        // Add user message
+        const userMessage = { role: 'user', content };
+        const updatedMessages = [...currentMessages, userMessage];
+        
+        // Save to localStorage
+        localStorage.setItem(`ai-dev-education-chat-${activeChatId}`, JSON.stringify(updatedMessages));
+        localStorage.setItem(`ai-dev-education-chat-${activeChatId}-last-update`, Date.now().toString());
+        
+        // Display updated messages
+        displayMessages(updatedMessages);
+        log('Message sent', 'success');
+        
+        // Simulate assistant response after 1 second
+        setTimeout(() => {
+          const assistantMessage = { 
+            role: 'assistant', 
+            content: `This is a response to: "${content}"` 
+          };
+          
+          const finalMessages = [...updatedMessages, assistantMessage];
+          
+          localStorage.setItem(`ai-dev-education-chat-${activeChatId}`, JSON.stringify(finalMessages));
+          localStorage.setItem(`ai-dev-education-chat-${activeChatId}-last-update`, Date.now().toString());
+          
+          displayMessages(finalMessages);
+          log('Received response', 'success');
+          
+          // Clear input
+          input.value = '';
+          
+          // Release lock
+          updateInProgressRef.current = false;
+        }, 1000);
+      } catch (error) {
+        log(`Error sending message: ${error.message}`, 'error');
+        updateInProgressRef.current = false;
+      }
+    });
+    
+    // Simulate a single update cycle
+    document.getElementById('simulateCycle').addEventListener('click', () => {
+      if (updateInProgressRef.current) {
+        log('Update in progress, please wait...', 'error');
+        return;
+      }
+      
+      if (!activeChatId) {
+        log('No active chat. Create one first.', 'error');
+        return;
+      }
+      
+      updateInProgressRef.current = true;
+      updateCycleCount++;
+      
+      try {
+        // Get current messages
+        const messagesJson = localStorage.getItem(`ai-dev-education-chat-${activeChatId}`);
+        const currentMessages = messagesJson ? JSON.parse(messagesJson) : [];
+        
+        // Add a test message
+        const testMessage = { 
+          role: 'user', 
+          content: `Test message from update cycle ${updateCycleCount}` 
+        };
+        const updatedMessages = [...currentMessages, testMessage];
+        
+        // Save to localStorage
+        localStorage.setItem(`ai-dev-education-chat-${activeChatId}`, JSON.stringify(updatedMessages));
+        localStorage.setItem(`ai-dev-education-chat-${activeChatId}-last-update`, Date.now().toString());
+        
+        // Display updated messages
+        displayMessages(updatedMessages);
+        log(`Update cycle ${updateCycleCount} completed`, 'success');
+        
+        // Release lock after a delay
+        setTimeout(() => {
+          updateInProgressRef.current = false;
+        }, 50);
+      } catch (error) {
+        log(`Error in update cycle: ${error.message}`, 'error');
+        updateInProgressRef.current = false;
+      }
+    });
+    
+    // Simulate multiple update cycles (potential loop)
+    document.getElementById('simulateLoop').addEventListener('click', () => {
+      if (updateInProgressRef.current) {
+        log('Update in progress, please wait...', 'error');
+        return;
+      }
+      
+      if (!activeChatId) {
+        log('No active chat. Create one first.', 'error');
+        return;
+      }
+      
+      log('Starting simulation of 10 update cycles...', 'info');
+      let cycleCount = 0;
+      
+      function runCycle() {
+        if (cycleCount >= 10) {
+          log('Completed 10 update cycles successfully!', 'success');
+          return;
+        }
+        
+        cycleCount++;
+        updateCycleCount++;
+        log(`Running update cycle ${cycleCount} of 10...`, 'info');
+        
+        try {
+          // Get current messages
+          const messagesJson = localStorage.getItem(`ai-dev-education-chat-${activeChatId}`);
+          const currentMessages = messagesJson ? JSON.parse(messagesJson) : [];
+          
+          // Add a test message
+          const testMessage = { 
+            role: 'user', 
+            content: `Test message from batch update ${updateCycleCount}` 
+          };
+          const updatedMessages = [...currentMessages, testMessage];
+          
+          // Save to localStorage
+          localStorage.setItem(`ai-dev-education-chat-${activeChatId}`, JSON.stringify(updatedMessages));
+          localStorage.setItem(`ai-dev-education-chat-${activeChatId}-last-update`, Date.now().toString());
+          
+          // Display updated messages
+          displayMessages(updatedMessages);
+          
+          // Schedule next cycle
+          setTimeout(runCycle, 200);
+        } catch (error) {
+          log(`Error in update cycle: ${error.message}`, 'error');
+        }
+      }
+      
+      // Start the cycle
+      runCycle();
+    });
+    
+    // Initialize
+    log('Chat test page loaded', 'info');
+    log('Click "Create New Chat" to start', 'info');
+  </script>
+</body>
+</html> 
